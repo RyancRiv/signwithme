@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Number_Quiz.css";
+import axios from "axios"; // Ensure axios is imported to make HTTP requests
 
 // Importing images statically for use in dynamic mapping
 import number0 from "../Letters/number00.png";
@@ -68,6 +69,28 @@ const Number_Quiz = () => {
     ) {
       setFeedback("Well done! You matched all the numbers correctly!");
       setFeedbackColor("green");
+      const userName = localStorage.getItem("userName");
+
+      if (userName) {
+        // Send a PUT request to update the lesson with quiz_complete = true
+        axios
+          .put(
+            "https://signwithme-92dm.onrender.com/api/lessons/update-lesson",
+            {
+              lessonId: "301",
+              userName: userName,
+              quiz_complete: true,
+            }
+          )
+          .then((response) => {
+            console.log("Lesson updated:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error updating lesson:", error);
+          });
+      } else {
+        console.error("User is not logged in, unable to update lesson.");
+      }
     }
   };
 
