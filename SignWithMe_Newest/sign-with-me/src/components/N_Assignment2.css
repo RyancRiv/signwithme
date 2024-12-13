@@ -1,0 +1,102 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0; 
+    
+    min-height: 100vh;
+  }
+  
+  /* Main Container */
+  #asl-container {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin-left:30%;
+    /* width: 100%; */
+    
+}
+  
+  /* Header */
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    /* color: #333333; */
+  }
+  
+  /* Link Button */
+  /* a button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  a button:hover {
+    background-color: #0056b3;
+  } */
+  
+  /* ASL Image/Video Container */
+  #asl-image {
+    margin-bottom: 20px;
+  }
+  
+  iframe,
+  img {
+    border-radius: 8px;
+  }
+  
+  /* Input Field */
+  #asl-translation {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  #asl-translation:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Submit Button */
+  .Back_Button {
+    /* background-color: #28a745; */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* button:hover {
+    background-color: #218838;
+  } */
+  
+  /* Feedback Text */
+  #asl-feedback {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #555555;
+  }
+  
+  #asl-feedback.correct {
+    color: #28a745;
+  }
+  
+  #asl-feedback.incorrect {
+    color: #dc3545;
+  }
+  

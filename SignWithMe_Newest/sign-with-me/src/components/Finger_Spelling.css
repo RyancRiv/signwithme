@@ -1,0 +1,102 @@
+/* Alphabet Container Styling */
+.alphabet-container2 {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr); /* 5 images per row */
+  justify-items: center; 
+  gap: 15px;
+  align-content: center;
+  /* min-height: 0vh; */
+  padding-top:50px;
+  padding-left:50px;
+  /* min-width */
+  max-width:100vh;
+}
+
+.alphabet-piece {
+  cursor: grab;
+}
+
+.alphabet-image {
+  max-width: 100px; /* Adjust size as needed */
+  max-height: 200px;
+}
+
+/* Drop Zone Styling */
+#drop-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between slots */
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  min-height: 120px;
+
+}
+
+/* Drop Slot Styling */
+.drop-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px; /* Adjust size */
+  height: 60px; /* Adjust size */
+  border: 2px solid #aaa; /* Visible border */
+  border-radius: 5px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+  color: #555; /* Placeholder text color */
+  transition: background-color 0.3s ease;
+}
+
+/* Correct & Incorrect Feedback */
+.drop-slot.correct {
+  background-color: lightgreen;
+}
+
+.drop-slot.incorrect {
+  background-color: lightcoral;
+}
+
+/* Popup Message Styling */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 255, 0, 0.8);
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  display: none;
+  z-index: 1000;
+}
+
+.popup.visible {
+  display: block;
+}
+
+/* Score Display */
+#score-display {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Final Message */
+#final-message {
+  font-size: 24px;
+  color: green;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Checkmark Styling */
+.checkmark {
+  font-size: 48px;
+  color: green;
+}

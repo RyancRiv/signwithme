@@ -1,0 +1,19 @@
+ul{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr); /* 5 images per row */
+    list-style-type: none; /* Removes the bullets */
+
+}
+h2{
+    text-align: center;
+    color:black;
+}
+p{
+    padding-left:20px;
+}
+li{
+    padding:5px;
+}
+.Assignment_Button:hover{
+    background-color:rgb(160, 137, 182);
+}

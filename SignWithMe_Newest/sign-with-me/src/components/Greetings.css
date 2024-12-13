@@ -1,0 +1,113 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* height: 100vh; */
+  }
+  
+  header {
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Container to make the practice sections display in rows */
+  #practice-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 5 images per row */
+    justify-items: center; 
+    gap: 7px;
+    align-content: center;
+  }
+  
+  /* Styles for each individual practice section */
+  .practice-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    margin: 20px 0;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 800px) {
+    .practice-section {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .practice-section {
+      width: 100%;
+    }
+  }
+  
+  .gif-container img {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+  
+  .tips h3 {
+    color: #0077cc;
+  }
+  
+  button.submit-btn {
+    background-color: #0077cc;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.submit-btn:hover {
+    background-color: #005fa3;
+  }
+  
+  button.submit-btn:disabled {
+    background-color: #cccccc;
+  }
+  
+  footer {
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  #feedback {
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+  }
+  
+  #feedback.error {
+    color: red;
+  }
+  

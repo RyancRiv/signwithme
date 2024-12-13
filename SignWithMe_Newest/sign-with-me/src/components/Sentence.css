@@ -1,0 +1,25 @@
+.word {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    background: #cce5ff;
+    border: 1px solid #007bff;
+    cursor: grab;
+  }
+  
+  .drop-zone {
+    margin-top: 20px;
+    height: 25px;
+    padding: 10px;
+    border: 2px dashed #007bff;
+    background: #e9f7ff;
+
+  }
+  
+  .dropped-word {
+    margin: 5px;
+    padding: 10px;
+    background: #d4edda;
+    border: 1px solid #28a745;
+  }
+  

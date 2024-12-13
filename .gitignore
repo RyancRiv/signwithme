@@ -1,0 +1,3 @@
+backend/node_modules/
+SignWithMe_Newest/sign-with-me/node_modules/*
+backend/.env

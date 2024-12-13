@@ -1,0 +1,135 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Main Container */
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  /* Image Container */
+  #image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  #current-noun-image {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Drag Words Section */
+  #drag-words {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .word {
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #e7f3ff;
+    color: #007bff;
+    cursor: grab;
+    transition: background-color 0.3s ease;
+  }
+  
+  .word:active {
+    cursor: grabbing;
+  }
+  
+  .word:hover {
+    background-color: #d0e9ff;
+  }
+  
+  /* Drop Zone */
+  #drop-noun {
+    border: 2px dashed #ccc;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888888;
+    margin: 20px auto;
+    width: 60%;
+    transition: border-color 0.3s ease;
+  }
+  
+  #drop-noun:hover {
+    border-color: #007bff;
+  }
+  
+  /* Feedback Section */
+  #feedback {
+    text-align: center;
+    font-size: 1rem;
+    color: #555555;
+    margin-top: 20px;
+  }
+  
+  #feedback.correct {
+    color: #28a745;
+  }
+  
+  #feedback.incorrect {
+    color: #dc3545;
+  }
+  
+  /* Button Styles */
+  /* button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+  } */
+  
+  /* button:hover {
+    background-color: #0056b3;
+  } */
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Completed Section */
+  a {
+    text-decoration: none;
+  }
+  
+  a button {
+    margin-top: 20px;
+    background-color: #28a745;
+  }
+  
+  /* a button:hover {
+    background-color: #218838;
+  } */
+  /* .Back_Button {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  } */
+
+  

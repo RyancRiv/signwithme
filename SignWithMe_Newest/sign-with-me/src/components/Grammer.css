@@ -1,0 +1,64 @@
+.App {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  header {
+    background-color: #6a239c;
+    color: white;
+    padding: 20px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+  }
+  
+  .rule-section {
+    margin: 20px 0;
+  }
+  
+  .slideshow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button {
+    background-color: #282c34;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #444;
+  }
+  
+  #drag-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .word {
+    margin: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    cursor: grab;
+  }
+  
+  #drop-zone {
+    margin-top: 20px;
+    border: 2px dashed #ddd;
+    padding: 20px;
+    min-height: 50px;
+    /* display: inline-block; */
+    width: 100%;
+  }
+  p{
+    color:rgb(0, 0, 0);
+  }
+  

@@ -1,0 +1,114 @@
+.number-quiz-container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    /* background-color: #f5f5f5; */
+    margin: 0;
+    padding: 0;
+}
+
+
+.quiz-header {
+    color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.quiz-title, .quiz-description {
+    margin: 0.5rem;
+    color:black;
+}
+
+.quiz-description{
+    font-size:25px;
+}
+.instructions {
+
+    padding: 1rem;
+}
+
+.instruction-text {
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.matching-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.number-list, .asl-signs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.draggable-number {
+    background: #530c8a;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: grab;
+    font-size: 1.2rem;
+}
+
+.draggable-number:active {
+    cursor: grabbing;
+}
+
+.asl-dropzone {
+    width: 100px;
+    height: 150px;
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+
+.asl-image {
+    max-width: 80%;
+    height: auto;
+}
+
+.asl-dropzone:hover {
+    background-color: #e0f7fa;
+}
+
+.feedback-message {
+    margin-top: 1rem;
+    /* font-size: 50px; */
+
+}
+
+.feedback-message.green {
+    color: rgb(14, 100, 14);
+}
+
+.feedback-message.red {
+    color: rgb(141, 22, 22);
+}
+
+.learn-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.learn-button:hover {
+    background-color: #0056b3;
+}
+#feedback_Number{
+    font-size:40px;
+}

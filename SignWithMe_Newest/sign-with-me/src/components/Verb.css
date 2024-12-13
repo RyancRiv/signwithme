@@ -1,0 +1,304 @@
+body {
+    font-family: Arial, sans-serif;
+    /* margin: 20px; */
+    background-color: #f9f9f9;
+    line-height: 1.6;
+    /* height:300px; */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Verbs Page */
+.tense-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    /* background:		#a064c9;  */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tense-section h2 {
+    margin-top: 0;
+    color: #000000;
+}
+
+.tense-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.tense-content p {
+    flex: 1;
+    margin-right: 15px;
+}
+
+.tense-gif {
+    flex: 1;
+    max-width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Colors Page */
+.flashcards {
+    height: 600px;
+    html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1; /* This allows the main content to grow and push the footer */
+  }
+  
+  footer {
+    background-color: #f8f9fa; /* Example styling */
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional for styling */
+  }
+  
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* .flashcard {
+    width: 300px;
+    height: 500px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+ */
+.flashcard div {
+
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+
+}
+
+/* Specific colors for each flashcard front */
+.flashcard.red .front {
+    background-color: red;
+    /* width: 150px; */
+}
+
+.flashcard.blue .front {
+    background-color: blue;
+}
+
+.flashcard.yellow .front {
+    background-color: yellow;
+    color: black; /* Adjust text color for better contrast */
+}
+
+.flashcard.green .front {
+    background-color: green;
+}
+
+.flashcard.orange .front {
+    background-color: orange;
+}
+.flashcard.red .back {
+    background-color: red;
+}
+
+.flashcard.blue .back {
+    background-color: blue;
+}
+
+.flashcard.yellow .back {
+    background-color: yellow;
+    color: black; /* Adjust text color for better contrast */
+}
+
+.flashcard.green .back {
+    background-color: green;
+}
+
+.flashcard.orange .back {
+    background-color: orange;
+}
+
+
+.flashcard .back {
+
+    /* background-color: #e0f7fa; */
+    transform: rotateY(180deg);
+
+}
+
+.flashcard:hover .front {
+
+    transform: rotateY(180deg);
+
+}
+
+.flashcard:hover .back {
+
+    transform: rotateY(0);
+
+}
+
+/* Base styles */
+body {
+
+    font-family: Arial, sans-serif;
+
+}
+
+.page {
+    display: block;
+    padding: 20px;
+}
+
+/* Hide non-active pages */
+.hidden {
+    display: none;
+}
+
+/* Flashcards */
+.flashcards {
+    display: flex;
+    gap: 10px;
+}
+
+.flashcard {
+    width: 150px;
+    height: 200px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.flashcard .front,
+.flashcard .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    background-color: black;
+}
+
+.flashcard .back {
+    transform: rotateY(180deg);
+}
+
+.flashcard:hover .back {
+    transform: rotateY(0deg);
+}
+
+.flashcard:hover .front {
+    transform: rotateY(-180deg);
+}
+
+/* Tense sections */
+.tense-section {
+    margin-bottom: 20px;
+}
+
+.tense-gif {
+    width: 300px;
+    height: auto;
+}
+
+/* General flashcard styles */
+.flashcards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.flashcard {
+    position: relative;
+    width: 150px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flashcard .front,
+.flashcard .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.8s ease-in-out;
+}
+
+.flashcard .front {
+    background-color: #f5f5f5;
+}
+
+/* .flashcard .back {
+    background-color: #ffd700;
+    transform: rotateY(180deg);
+} */
+
+/* Hover effect to rotate card */
+.flashcard:hover .front {
+    transform: rotateY(180deg);
+}
+
+.flashcard:hover .back {
+    transform: rotateY(360deg);
+}
+/* img{
+    width:150px;
+    height:100px;
+} */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .lightbox img {
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
