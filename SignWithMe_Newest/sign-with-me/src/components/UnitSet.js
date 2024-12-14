@@ -283,10 +283,10 @@ const UnitSet = () => {
               text={`${calculateLessonProgress()}%`}
               styles={{
                 path: {
-                  stroke: calculateLessonProgress() === 100 ? "green" : "blue",
+                  stroke: calculateLessonProgress() === 100 ? "green" : "red",
                 },
                 text: {
-                  fill: calculateLessonProgress() === 100 ? "green" : "blue",
+                  fill: calculateLessonProgress() === 100 ? "green" : "red",
                 },
               }}
             />
@@ -298,10 +298,10 @@ const UnitSet = () => {
               text={`${calculateUnitProgress()}%`}
               styles={{
                 path: {
-                  stroke: calculateUnitProgress() === 100 ? "green" : "blue",
+                  stroke: calculateUnitProgress() === 100 ? "green" : "red",
                 },
                 text: {
-                  fill: calculateUnitProgress() === 100 ? "green" : "blue",
+                  fill: calculateUnitProgress() === 100 ? "green" : "red",
                 },
               }}
             />
