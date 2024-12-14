@@ -273,35 +273,35 @@ const UnitSet = () => {
     <div className="unitset-container">
       {/* User Dashboard */}
       <div className="user-dashboard">
-        <h2>Welcome, {userName}!</h2>
+        <h2 style={{ fontSize: "50px" }} >Welcome, {userName}!</h2>
         <div className="dashboard-stats">
           
           <div className="progress-overview">
-            <h3>Lesson Completion</h3>
+            <h3 style={{ fontSize: "25px" }} >Lesson Completion</h3>
             <CircularProgressbar
               value={calculateLessonProgress()}
               text={`${calculateLessonProgress()}%`}
               styles={{
                 path: {
-                  stroke: calculateLessonProgress() === 100 ? "green" : "red",
+                  stroke: calculateLessonProgress() === 100 ? "green" : "#951f1f",
                 },
                 text: {
-                  fill: calculateLessonProgress() === 100 ? "green" : "red",
+                  fill: calculateLessonProgress() === 100 ? "green" : "#951f1f",
                 },
               }}
             />
           </div>
           <div className="progress-overview">
-            <h3>Unit Completion</h3>
+            <h3 style={{ fontSize: "25px" }} >Unit Completion</h3>
             <CircularProgressbar
               value={calculateUnitProgress()}
               text={`${calculateUnitProgress()}%`}
               styles={{
                 path: {
-                  stroke: calculateUnitProgress() === 100 ? "green" : "red",
+                  stroke: calculateUnitProgress() === 100 ? "green" : "#951f1f",
                 },
                 text: {
-                  fill: calculateUnitProgress() === 100 ? "green" : "red",
+                  fill: calculateUnitProgress() === 100 ? "green" : "#951f1f",
                 },
               }}
             />
