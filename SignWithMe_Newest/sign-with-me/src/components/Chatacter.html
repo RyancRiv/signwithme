@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Customization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customize Your Character</h1>
+    <label for="avatarSeed">Enter a name for your avatar:</label>
+    <input type="text" id="avatarSeed" placeholder="Your Name" value="default">
+    
+    <label for="avatarStyle">Choose a style:</label>
+    <select id="avatarStyle">
+        <option value="bottts">Bottts</option>
+        <option value="adventurer">Adventurer</option>
+        <option value="identicon">Identicon</option>
+        <option value="micah">Micah</option>
+    </select>
+    
+    <button onclick="updateAvatar()">Generate Avatar</button>
+    <br>
+    <img id="avatarPreview" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar Preview">
+    
+    <script>
+        function updateAvatar() {
+            const seed = document.getElementById("avatarSeed").value;
+            const style = document.getElementById("avatarStyle").value;
+            const avatarUrl = `https://api.dicebear.com/7.x/${style}/svg?seed=${seed}`;
+            document.getElementById("avatarPreview").src = avatarUrl;
+        }
+    </script>
+</body>
+</html>

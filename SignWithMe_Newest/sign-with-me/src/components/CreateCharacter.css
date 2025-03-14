@@ -1,0 +1,17 @@
+.character-container {
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .character-preview {
+    margin-top: 20px;
+  }
+  
+  .character-img {
+    width: 200px;
+    height: 250px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  

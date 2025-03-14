@@ -25,9 +25,9 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  // const translateClick = () => {
-  //   navigate("/translator");
-  // };
+  const createcharacterClick = () => {
+    navigate("/createcharacters");
+  };
 
   return (
     <nav>
@@ -44,21 +44,24 @@ const Navbar = () => {
           <button className="navbar-button lessons-button" onClick={unitsClick}>
             Units
           </button>
-          {/* <button
-            className="navbar-button translator-button"
-            onClick={translateClick}
-          >
-            Translator Tool */}
-          {/* </button> */}
+
           {isAuthenticated ? (
-            <button className="navbar-button b-button" onClick={handleLogout}>
-              Logout
-            </button>
+            <>
+              <button className="navbar-button b-button" onClick={handleLogout}>
+                Logout
+              </button>
+
+            </>
           ) : (
             <button className="navbar-button b-button" onClick={loginClick}>
               Login/Signup
             </button>
+
+            
           )}
+          <button className="navbar-button b-button" onClick={createcharacterClick}>
+              Create Character
+            </button>
         </div>
       </div>
     </nav>

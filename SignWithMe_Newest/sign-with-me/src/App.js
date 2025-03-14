@@ -24,6 +24,8 @@ import Verb from "./components/Verb";
 import Numbers from "./components/Numbers";
 import Number_Quiz from "./components/Number_Quiz";
 import Final from "./components/Final";
+import CreateCharacter from "./components/CreateCharacter"; // Ensure correct path
+
 
 function App() {
   const [message, setMessage] = useState("");
@@ -43,6 +45,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/units" element={<Units />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/createcharacters" element={<CreateCharacter />} />
           <Route path="/translator" element={<Translator />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
