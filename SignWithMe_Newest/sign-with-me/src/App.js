@@ -30,13 +30,23 @@ import CreateCharacter from "./components/CreateCharacter"; // Ensure correct pa
 function App() {
   const [message, setMessage] = useState("");
 
+  // useEffect(() => {
+  //   // Fetch data from the backend
+  //   axios
+  //     .get("https://signwithme-92dm.onrender.com/api")
+  //     .then((response) => setMessage(response.data.message))
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
   useEffect(() => {
-    // Fetch data from the backend
+    // Use environment variable for API URL or fallback to localhost
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5001";
+
     axios
-      .get("https://signwithme-92dm.onrender.com/api")
+      .get(`${API_URL}/api`)
       .then((response) => setMessage(response.data.message))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
   return (
     <AuthProvider>
       <BrowserRouter>

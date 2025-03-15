@@ -59,7 +59,9 @@ const App = () => {
           // Send a PUT request to update the lesson with quiz_complete = true
           axios
             .put(
-              "https://signwithme-92dm.onrender.com/api/lessons/update-lesson",
+              // "https://signwithme-92dm.onrender.com/api/lessons/update-lesson",
+              "http://localhost:5001/api/lessons/update-lesson",
+
               {
                 lessonId: "201",
                 userName: userName,

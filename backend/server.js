@@ -10,14 +10,14 @@ const authRoutes = require("./routes/authcall");
 const lessonRoutes = require("./routes/lessonRoutes");
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(
   cors({
     origin: [
-      "http://localhost:3000", // Local testing
+      "http://localhost:3001", // Local testing
       "https://your-frontend-url.vercel.app", // Replace with your Vercel frontend URL
     ],
   })

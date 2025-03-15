@@ -100,7 +100,9 @@ function Quiz() {
       const lessonId = "101"; // The lesson to check and update
       if (totalScore === 4) {
         await axios.put(
-          "https://signwithme-92dm.onrender.com/api/lessons/update-lesson",
+          // "https://signwithme-92dm.onrender.com/api/lessons/update-lesson",
+          "http://localhost:5001/api/lessons/update-lesson",
+
           {
             lessonId: lessonId,
             userName: userName,

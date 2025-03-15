@@ -21,7 +21,8 @@ const SignUpPage = () => {
     } else {
       try {
         // Send sign-up request to the backend
-        await axios.post("https://signwithme-92dm.onrender.com/api/signup", {
+        // await axios.post("https://signwithme-92dm.onrender.com/api/signup", {
+          await axios.post("http://localhost:5001/api/signup", {
           username,
           email,
           password,
@@ -29,8 +30,10 @@ const SignUpPage = () => {
         setMessage("User created successfully");
 
         // After sign-up, log the user in automatically
-        const response = await axios.post(
-          "https://signwithme-92dm.onrender.com/api/signin",
+        // const response = await axios.post(
+        //   "https://signwithme-92dm.onrender.com/api/signin",
+        const response = await axios.post("http://localhost:5001/api/signin",
+
           {
             username,
             password,
