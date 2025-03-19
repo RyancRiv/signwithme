@@ -36,14 +36,42 @@
             border-radius: 10px;
             display: none; /* Hide the avatar initially */
         }
+        .link-form {
+            margin-top: 40px;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f9f9f9;
+        }
+        .link-form input {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .link-form button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        .link-form button:hover {
+            background-color: darkblue;
+        }
     </style>
 </head>
 <body>
     <h1>Customize Your Character</h1>
 
     <div class="gender-container">
-        <!-- <div class="gender-option" onclick="selectGender('male')">Male</div> -->
-        <!-- <div class="gender-option" onclick="selectGender('female')">Female</div> -->
+        <div class="gender-option" onclick="selectGender('male')">Male</div>
+        <div class="gender-option" onclick="selectGender('female')">Female</div>
     </div>
 
     <div class="avatar-container">
@@ -63,6 +91,13 @@
     
     <button onclick="updateAvatar()">Generate Avatar</button>
 
+    <!-- Form to collect and submit link -->
+    <div class="link-form">
+        <h3>Submit Your Avatar Link</h3>
+        <input type="text" id="userLink" placeholder="Enter your link here">
+        <button onclick="submitLink()">Submit</button>
+    </div>
+
     <script>
         let selectedGender = "";
 
@@ -76,11 +111,31 @@
 
             const seed = document.getElementById("avatarSeed").value;
             const style = document.getElementById("avatarStyle").value;
-            //const avatarUrl = `https://api.dicebear.com/7.x/${style}/svg?seed=${seed}`;
+            const avatarUrl = `https://api.dicebear.com/7.x/${style}/svg?seed=${seed}`;
 
             const avatarImg = document.getElementById("avatarPreview");
             avatarImg.src = avatarUrl;
             avatarImg.style.display = "block"; // Show the avatar when gender is selected
+        }
+
+        function submitLink() {
+            const userLink = document.getElementById("userLink").value;
+
+            if (!userLink) {
+                alert("Please enter a valid link.");
+                return;
+            }
+
+            fetch("https://your-backend-endpoint.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ link: userLink })
+            })
+            .then(response => response.json())
+            .then(data => alert("Link submitted successfully!"))
+            .catch(error => alert("Error submitting link."));
         }
     </script>
 </body>
