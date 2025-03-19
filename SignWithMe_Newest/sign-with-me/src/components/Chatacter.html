@@ -10,17 +10,46 @@
             text-align: center;
             margin: 50px;
         }
+        .gender-container {
+            display: flex;
+            justify-content: center; 
+            gap: 20px; 
+            margin: 20px 0;
+        }
+        .gender-option {
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .gender-option:hover {
+            transform: scale(1.1);
+            border-color: blue;
+        }
+        .avatar-container {
+            margin-top: 20px;
+        }
         img {
             width: 200px;
             height: 200px;
-            border: 2px solid black;
             border-radius: 10px;
-            margin: 20px;
+            display: none; /* Hide the avatar initially */
         }
     </style>
 </head>
 <body>
     <h1>Customize Your Character</h1>
+
+    <div class="gender-container">
+        <!-- <div class="gender-option" onclick="selectGender('male')">Male</div> -->
+        <!-- <div class="gender-option" onclick="selectGender('female')">Female</div> -->
+    </div>
+
+    <div class="avatar-container">
+        <img id="avatarPreview" alt="Avatar Preview">
+    </div>
+
     <label for="avatarSeed">Enter a name for your avatar:</label>
     <input type="text" id="avatarSeed" placeholder="Your Name" value="default">
     
@@ -33,15 +62,25 @@
     </select>
     
     <button onclick="updateAvatar()">Generate Avatar</button>
-    <br>
-    <img id="avatarPreview" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar Preview">
-    
+
     <script>
+        let selectedGender = "";
+
+        function selectGender(gender) {
+            selectedGender = gender;
+            updateAvatar();
+        }
+
         function updateAvatar() {
+            if (!selectedGender) return; // Do nothing if no gender is selected
+
             const seed = document.getElementById("avatarSeed").value;
             const style = document.getElementById("avatarStyle").value;
-            const avatarUrl = `https://api.dicebear.com/7.x/${style}/svg?seed=${seed}`;
-            document.getElementById("avatarPreview").src = avatarUrl;
+            //const avatarUrl = `https://api.dicebear.com/7.x/${style}/svg?seed=${seed}`;
+
+            const avatarImg = document.getElementById("avatarPreview");
+            avatarImg.src = avatarUrl;
+            avatarImg.style.display = "block"; // Show the avatar when gender is selected
         }
     </script>
 </body>
