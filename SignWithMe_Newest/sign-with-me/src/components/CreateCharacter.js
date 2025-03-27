@@ -1,4 +1,3 @@
-// export default CreateCharacter;
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreateCharacter.css";
@@ -9,13 +8,14 @@ const CreateCharacter = () => {
   const [submittedUrl, setSubmittedUrl] = useState("");
   const [characterMap, setCharacterMap] = useState({});
   const navigate = useNavigate();
+  const iframeSrc = "https://readyplayer.me/avatar?frame_api";
 
   useEffect(() => {
     const container = document.getElementById("avatar-container");
 
     if (!container.querySelector("iframe")) {
       const iframe = document.createElement("iframe");
-      iframe.src = "https://readyplayer.me/avatar?frame_api";
+      iframe.src = iframeSrc;
       iframe.style.width = "100%";
       iframe.style.height = "600px";
       iframe.style.border = "none";
@@ -23,15 +23,16 @@ const CreateCharacter = () => {
     }
 
     const handleMessage = (event) => {
-      if (event.origin === "https://readyplayer.me") {
-        try {
-          const data = JSON.parse(event.data);
-          if (data.type === "avatar") {
-            setAvatarUrl(data.url);
-          }
-        } catch (error) {
-          console.error("Error parsing avatar data:", error);
+      if (event.origin !== "https://readyplayer.me") return;
+
+      try {
+        const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+
+        if (data?.type === "avatar") {
+          setAvatarUrl(data.url);
         }
+      } catch (error) {
+        console.error("Error parsing avatar data:", error);
       }
     };
 
@@ -69,7 +70,7 @@ const CreateCharacter = () => {
       <h1>Create Your Character</h1>
       <div id="avatar-container"></div>
 
-      {avatarUrl && (
+      {avatarUrl ? (
         <div className="avatar-preview">
           <h3>Avatar Preview</h3>
           <img src={avatarUrl} alt="Avatar" className="avatar-img" />

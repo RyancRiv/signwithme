@@ -43,7 +43,7 @@ const SignUpPage = () => {
         // Store the token and update AuthContext
         localStorage.setItem("token", response.data.token);
         login(response.data.token, username); // Update the AuthContext to reflect that the user is logged in
-        navigate("/"); // Redirect to home after successful login
+        navigate("/createcharacters"); // Redirect to home after successful login
       } catch (error) {
         setMessage(error.response?.data?.message || "Something went wrong");
       }
