@@ -26,8 +26,8 @@ const Navbar = () => {
   };
 
   const createcharacterClick = () => {
-    // navigate("/createcharacters");
-    navigate("/createcharacters2");
+    navigate("/createcharacters");
+    // navigate("/createcharacters2");
 
   };
 

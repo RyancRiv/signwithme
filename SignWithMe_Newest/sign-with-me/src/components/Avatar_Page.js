@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import AvatarCreator from "./Character_Creation";
+// import AvatarCreator from "./Character_Creation";
+import AvatarCreator from "./CreateCharacter";
 
 const AvatarPage = () => {
   const [avatarUrl, setAvatarUrl] = useState(null); // Holds the avatar URL (GLB file)
@@ -10,6 +11,8 @@ const AvatarPage = () => {
   // Load avatar URL from localStorage if available
   useEffect(() => {
     const storedAvatarUrl = localStorage.getItem("avatarUrl");
+    // const storedAvatarUrl = "/model/main_avatar.glb";
+
     if (storedAvatarUrl) {
       setAvatarUrl(storedAvatarUrl); // Set the avatar URL from localStorage if it exists
     }

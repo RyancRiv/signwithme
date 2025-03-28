@@ -28,6 +28,7 @@ import CreateCharacter from "./components/CreateCharacter"; // Ensure correct pa
 import Avatar from "./components/AnimationScene";
 import CreateCharacter2 from "./components/Character_Creation";
 import AvatarPage from "./components/Avatar_Page";
+import AvatarWithAnimation from "./components/Avatar_Animations";
 
 
 
@@ -64,6 +65,7 @@ function App() {
           <Route path="/createcharacters" element={<CreateCharacter />} />
           <Route path="/createcharacters2" element={<CreateCharacter2 />} />
           <Route path="/avatar" element={<AvatarPage />} />
+          <Route path="/avatar_animated" element = {<AvatarWithAnimation />} />
 
 
           <Route path="/translator" element={<Translator />} />
