@@ -31,7 +31,7 @@ function LandingPage() {
 
       <Canvas>
         <ambientLight intensity={2.5} />
-        <spotLight position={[5, 5, 5]} angle={0.3} />
+        <spotLight position={[5, 5, 5]} angle={0.5} />
         <AvatarWithAnimation animationName="Armature.001|mixamo.com|Layer0" />
       </Canvas>
     </div>
