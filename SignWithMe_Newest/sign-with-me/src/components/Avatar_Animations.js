@@ -1,43 +1,51 @@
-import React, { useRef, useEffect } from 'react';
-import { useGLTF, useAnimations } from '@react-three/drei';
+import React, { useRef, useEffect } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
-function AvatarWithAnimation({ animationName  }) {
+function AvatarWithAnimation({ animationName }) {
   const group = useRef();
 
-  // Load the model
-//   const { scene: avatarScene, animations } = useGLTF('/models/main_avatar.glb');
-  const { scene: avatarScene } = useGLTF('/models/main_avatar.glb'); 
-  const { animations } = useGLTF('/animation/Updated_Avatar_Pointing.glb'); 
+  // Load model
+  const { scene: avatarScene } = useGLTF("/models/main_avatar.glb");
 
-  // Check if animations exist
-  console.log("Animations loaded:", animations.length);
-  if (animations.length === 0) {
-    console.warn("No animations found in the model");
-  }
+  // Load animations from separate GLB files
+  const { animations: pointingAnim } = useGLTF("/animation/Updated_Avatar_Pointing.glb");
+  const { animations: A_Anim } = useGLTF("/animation/Avatar_Sign_A.glb");
+  const { animations: B_Anim } = useGLTF("/animation/Avatar_Sign_B.glb");
 
-  // Apply animations
-  const { actions } = useAnimations(animations, group);
+  // Map animations to custom names
+  const animationMap = {
+    Pointing: pointingAnim[0], // Manually setting the animation
+    A_Sign: A_Anim[0],
+    B_Sign: B_Anim[0]
+  };
+
+  // Extract animations for useAnimations
+  const allAnimations = Object.values(animationMap).filter(Boolean);
+  const { actions } = useAnimations(allAnimations, group);
 
   useEffect(() => {
-    console.log("Loaded animations:", animations.map(a => a.name));
-    console.log("Actions available:", Object.keys(actions));
-
-    if (animations.length === 0) {
-        console.warn("No animations found in the GLB file!");
-        return;
+    if (animationMap[animationName]) {
+      const animActionName = animationMap[animationName].name;
+      Object.values(actions).forEach((action) => action.stop()); // Stop any active animations
+  
+      const action = actions[animActionName];
+      if (action) {
+        action.reset();
+        // action.setDuration(10.0); // Adjust the duration to 3 seconds
+        action.timeScale = 0.8;  // Normal playback speed
+        action.play();
+        console.log(`Playing animation: ${animActionName} (3s duration, normal speed)`);
+      } else {
+        console.warn(`Animation '${animActionName}' not found in actions!`);
+      }
     }
-
-    if (animationName && actions[animationName]) {
-        actions[animationName].reset().fadeIn(0.5).play();
-        console.log(`Playing animation: ${animationName}`);
-    } else {
-        console.warn(`Animation '${animationName}' not found! Available animations:`, Object.keys(actions));
-    }
-}, [animationName, actions]);
-
+  }, [animationName, actions]);
+  
   return (
     <group ref={group}>
-      <primitive object={avatarScene} scale={[1.9, 1.9, 1.8]} position={[0, -2, 0]} />
+      {/* <primitive object={avatarScene} scale={[1.9, 1.9, 1.8]} position={[0, -2, 0]} /> */}
+      <primitive object={avatarScene} scale={[3.5, 3.5, 4]} position={[0.8, -4, 0]} />
+
     </group>
   );
 }

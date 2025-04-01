@@ -3,6 +3,8 @@ import React from "react";
 import "./LandingPage.css";
 import { Canvas } from '@react-three/fiber';
 import AvatarWithAnimation from "./Avatar_Animations";
+import { ToonShader } from '@react-three/drei';
+
 
 console.log("AvatarWithAnimation component is rendering!");
 
@@ -30,9 +32,9 @@ function LandingPage() {
 
 
       <Canvas>
-        <ambientLight intensity={2.5} />
-        <spotLight position={[5, 5, 5]} angle={0.5} />
-        <AvatarWithAnimation animationName="Armature.001|mixamo.com|Layer0" />
+        <ambientLight intensity={2} />
+        
+        <AvatarWithAnimation animationName="Pointing"  />
       </Canvas>
     </div>
   );
