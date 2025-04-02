@@ -51,7 +51,8 @@ function AvatarWithAnimation({ animationName }) {
   return (
     <group ref={group}>
       {/* <primitive object={avatarScene} scale={[1.9, 1.9, 1.8]} position={[0, -2, 0]} /> */}
-      <primitive object={avatarScene} scale={[3.5, 3.5, 4]} position={[0.8, -4, 0]} rotation={[0.25, -0.2, 0]} />
+      <primitive object={avatarScene} scale={[2.5, 2.5, 4]} position={[-0.5, -2.5, 0]} rotation={[0.2, 0, 0]}   renderOrder={3} 
+ />
 
     </group>
   );
