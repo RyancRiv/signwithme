@@ -22,7 +22,7 @@ function Quiz() {
   const [level2Score, setLevel2Score] = useState(0);
   const [currentData, setCurrentData] = useState([]);
   const [feedback, setFeedback] = useState("");
-  const [quizCompleted, setQuizCompleted] = useState(false);
+  //const [quizCompleted, setQuizCompleted] = useState(false);
 
   const level1Data = [
     {

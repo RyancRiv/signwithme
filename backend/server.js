@@ -18,13 +18,8 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: [
-<<<<<<< HEAD
-      "http://localhost:3000",
-      "https://your-frontend-url.vercel.app", 
-=======
       "http://localhost:3000", // Local testing
       "https://your-frontend-url.vercel.app", // Replace with your Vercel frontend URL
->>>>>>> 00cee03e77e9ce199b4c8bf70865a4522679c90c
     ],
   })
 );
