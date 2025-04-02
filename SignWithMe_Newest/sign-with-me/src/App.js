@@ -25,6 +25,12 @@ import Numbers from "./components/Numbers";
 import Number_Quiz from "./components/Number_Quiz";
 import Final from "./components/Final";
 import CreateCharacter from "./components/CreateCharacter"; // Ensure correct path
+import Avatar from "./components/AnimationScene";
+import CreateCharacter2 from "./components/Character_Creation";
+import AvatarPage from "./components/Avatar_Page";
+import AvatarWithAnimation from "./components/Avatar_Animations";
+
+
 
 
 function App() {
@@ -55,7 +61,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/units" element={<Units />} />
           <Route path="/quiz" element={<Quiz />} />
+
           <Route path="/createcharacters" element={<CreateCharacter />} />
+          <Route path="/createcharacters2" element={<CreateCharacter2 />} />
+          <Route path="/avatar" element={<AvatarPage />} />
+          <Route path="/avatar_animated" element = {<AvatarWithAnimation />} />
+
+
           <Route path="/translator" element={<Translator />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
@@ -85,6 +97,8 @@ function App() {
           <Route path="/units/lesson7" element={<Numbers />} />
           <Route path="/units/lesson7/quiz" element={<Number_Quiz />} />
           <Route path="/units/Final" element={<Final />} />
+          {/* <Route path="/units/Avatar" element={<Avatar />} /> */}
+
         </Routes>
       </BrowserRouter>
       {/* <Footer /> */}

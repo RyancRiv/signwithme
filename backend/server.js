@@ -18,18 +18,20 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: [
+<<<<<<< HEAD
       "http://localhost:3000",
       "https://your-frontend-url.vercel.app", 
+=======
+      "http://localhost:3000", // Local testing
+      "https://your-frontend-url.vercel.app", // Replace with your Vercel frontend URL
+>>>>>>> 00cee03e77e9ce199b4c8bf70865a4522679c90c
     ],
   })
 );
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => console.log("Connected to MongoDB"));

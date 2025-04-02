@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import "./LandingPage.css";
+import { Canvas } from '@react-three/fiber';
+import AvatarWithAnimation from "./Avatar_Animations";
+import { ToonShader } from '@react-three/drei';
+
+
+console.log("AvatarWithAnimation component is rendering!");
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -8,9 +14,10 @@ function LandingPage() {
   const unitsClick = () => {
     navigate("/units");
   };
+
   return (
     <div className="landing-container">
-      <div className="content">
+      <div className="content" style={{ padding: "100px" }} >
         <h1 className="welcome-text">Welcome to Sign With Me!</h1>
         <p className="description-text">
           Our goal at Sign With Me is to cultivate understanding and inclusion
@@ -22,6 +29,13 @@ function LandingPage() {
           Get Started
         </button>
       </div>
+
+
+      <Canvas>
+        <ambientLight intensity={2} />
+        
+        <AvatarWithAnimation animationName="Pointing"  />
+      </Canvas>
     </div>
   );
 }

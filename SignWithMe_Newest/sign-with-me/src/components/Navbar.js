@@ -27,7 +27,16 @@ const Navbar = () => {
 
   const createcharacterClick = () => {
     navigate("/createcharacters");
+    // navigate("/createcharacters2");
+
   };
+
+  const gotoavatar = () => {
+    // navigate("/createcharacters");
+    navigate("/avatar");
+
+  };
+
 
   return (
     <nav>
@@ -62,6 +71,10 @@ const Navbar = () => {
           <button className="navbar-button b-button" onClick={createcharacterClick}>
               Create Character
             </button>
+            <button className="navbar-button b-button" onClick={gotoavatar}>
+              Go To Avatar
+            </button>
+
         </div>
       </div>
     </nav>
