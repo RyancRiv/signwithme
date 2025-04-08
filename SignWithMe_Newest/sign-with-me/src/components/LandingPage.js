@@ -29,23 +29,16 @@ function LandingPage() {
           Get Started
         </button>
 
-      <div className="canvas-container">
-        <Canvas>
-          <ambientLight intensity={2} />
-          <AvatarWithAnimation animationName="Pointing" />
-        </Canvas>
-      </div>
-
     </div>
 
 
-      {/* <div className="canvas-container"> */}
-      {/* <Canvas>
+      {/* <div className="canvas-container">  */}
+        <Canvas> 
         <ambientLight intensity={2} />
         <AvatarWithAnimation animationName="Pointing" />
-      </Canvas> */}
-    {/* </div> */}
-    </div>
+      </Canvas> 
+     </div>
+    // </div>
   );
 }
 
