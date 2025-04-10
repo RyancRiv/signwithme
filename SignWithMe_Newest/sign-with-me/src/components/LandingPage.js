@@ -28,15 +28,17 @@ function LandingPage() {
         <button className="get-started-button" onClick={unitsClick}>
           Get Started
         </button>
-      </div>
 
-
-      <Canvas>
-        <ambientLight intensity={2} />
-        
-        <AvatarWithAnimation animationName="Pointing"  />
-      </Canvas>
     </div>
+
+
+      {/* <div className="canvas-container">  */}
+        <Canvas> 
+        <ambientLight intensity={2} />
+        <AvatarWithAnimation animationName="Pointing" />
+      </Canvas> 
+     </div>
+    // </div>
   );
 }
 
