@@ -1,13 +1,15 @@
-// export default CreateCharacter;
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./CreateCharacter.css";
 
 const CreateCharacter = () => {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [userInputUrl, setUserInputUrl] = useState("");
-  const [submittedUrl, setSubmittedUrl] = useState("");
+  const [status, setStatus] = useState("");
   const [characterMap, setCharacterMap] = useState({});
+  const [submittedUrl, setSubmittedUrl] = useState("");
+  const [file, setFile] = useState(null); // For GLB upload
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,13 +38,10 @@ const CreateCharacter = () => {
     };
 
     window.addEventListener("message", handleMessage);
-
-    return () => {
-      window.removeEventListener("message", handleMessage);
-    };
+    return () => window.removeEventListener("message", handleMessage);
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!userInputUrl) {
       alert("Please enter a valid avatar URL.");
       return;
@@ -59,9 +58,44 @@ const CreateCharacter = () => {
       [characterName]: userInputUrl,
     }));
 
+    try {
+      const response = await axios.get(`/download-avatar?url=${encodeURIComponent(userInputUrl)}`);
+      setStatus(response.data);
+    } catch (error) {
+      console.error("Error downloading avatar:", error);
+      setStatus("Error downloading avatar.");
+    }
+
     setSubmittedUrl(userInputUrl);
     setUserInputUrl("");
-    alert("Avatar link submitted and saved to character map!");
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile && selectedFile.name.endsWith(".glb")) {
+      setFile(selectedFile);
+      setStatus("");
+    } else {
+      setFile(null);
+      setStatus("❌ Only .glb files are allowed.");
+    }
+  };
+
+  const handleFileUpload = async (e) => {
+    e.preventDefault();
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("myFile", file);
+
+    try {
+      const res = await axios.post("/upload", formData);
+      setStatus(`✅ ${res.data.message}`);
+      setFile(null);
+    } catch (err) {
+      console.error(err);
+      setStatus("❌ Upload failed.");
+    }
   };
 
   return (
@@ -86,6 +120,17 @@ const CreateCharacter = () => {
         />
         <button onClick={handleSubmit}>Submit</button>
       </div>
+
+      <div className="upload-section">
+        <h3>Upload .glb File</h3>
+        <form onSubmit={handleFileUpload}>
+          <input type="file" accept=".glb" onChange={handleFileChange} />
+          <br />
+          <button type="submit" disabled={!file}>Upload</button>
+        </form>
+      </div>
+
+      {status && <p>{status}</p>}
 
       {Object.keys(characterMap).length > 0 && (
         <div className="character-map">
