@@ -9,7 +9,8 @@ const CreateCharacter = () => {
   const [status, setStatus] = useState("");
   const [characterMap, setCharacterMap] = useState({});
   const [submittedUrl, setSubmittedUrl] = useState("");
-  const [file, setFile] = useState(null); // For GLB upload
+  const [file, setFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,11 +60,14 @@ const CreateCharacter = () => {
     }));
 
     try {
-      const response = await axios.get(`/download-avatar?url=${encodeURIComponent(userInputUrl)}`);
-      setStatus(response.data);
+      const response = await axios.post(
+        "http://localhost:3000/api/download-avatar",
+        { url: userInputUrl }
+      );
+      setStatus(`✅ ${response.data.message}`);
     } catch (error) {
       console.error("Error downloading avatar:", error);
-      setStatus("Error downloading avatar.");
+      setStatus(`❌ Error: ${error.response?.data?.message || error.message}`);
     }
 
     setSubmittedUrl(userInputUrl);
@@ -75,6 +79,7 @@ const CreateCharacter = () => {
     if (selectedFile && selectedFile.name.endsWith(".glb")) {
       setFile(selectedFile);
       setStatus("");
+      setUploadProgress(0);
     } else {
       setFile(null);
       setStatus("❌ Only .glb files are allowed.");
@@ -89,12 +94,30 @@ const CreateCharacter = () => {
     formData.append("myFile", file);
 
     try {
-      const res = await axios.post("/upload", formData);
+      setStatus("⏳ Uploading file...");
+      
+      const res = await axios.post("http://localhost:3000/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        },
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          setUploadProgress(percentCompleted);
+        }
+      });
+
       setStatus(`✅ ${res.data.message}`);
+      console.log("File upload details:", res.data);
       setFile(null);
+      setUploadProgress(0);
     } catch (err) {
-      console.error(err);
-      setStatus("❌ Upload failed.");
+      console.error("Upload error details:", err);
+      setStatus(
+        `❌ Upload failed: ${err.response?.data?.error || err.message}`
+      );
+      setUploadProgress(0);
     }
   };
 
@@ -124,13 +147,30 @@ const CreateCharacter = () => {
       <div className="upload-section">
         <h3>Upload .glb File</h3>
         <form onSubmit={handleFileUpload}>
-          <input type="file" accept=".glb" onChange={handleFileChange} />
+          <input 
+            type="file" 
+            accept=".glb" 
+            onChange={handleFileChange} 
+          />
+          {uploadProgress > 0 && (
+            <div className="progress-bar">
+              <div style={{ width: `${uploadProgress}%` }}>
+                {uploadProgress}%
+              </div>
+            </div>
+          )}
           <br />
-          <button type="submit" disabled={!file}>Upload</button>
+          <button type="submit" disabled={!file}>
+            {uploadProgress > 0 ? "Uploading..." : "Upload"}
+          </button>
         </form>
       </div>
 
-      {status && <p>{status}</p>}
+      {status && (
+        <p className={`status ${status.includes("❌") ? "error" : "success"}`}>
+          {status}
+        </p>
+      )}
 
       {Object.keys(characterMap).length > 0 && (
         <div className="character-map">
