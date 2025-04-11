@@ -13,6 +13,9 @@ function AvatarWithAnimation({ animationName }) {
   const { animations: B_Anim } = useGLTF("/animation/Avatar_Sign_B.glb");
   const { animations: C_Anim } = useGLTF("/animation/Avatar_Sign_C.glb");
   const { animations: D_Anim } = useGLTF("/animation/Avatar_Sign_D.glb");
+  const { animations: E_Anim } = useGLTF("/animation/Avatar_Sign_E.glb");
+  const { animations: F_Anim } = useGLTF("/animation/Avatar_Sign_F.glb");
+
 
 
   // Map animations to custom names
@@ -21,8 +24,8 @@ function AvatarWithAnimation({ animationName }) {
     A_Sign: A_Anim[0],
     B_Sign: B_Anim[0],
     C_Sign: C_Anim[0],
-    D_Sign: D_Anim[0]
-
+    D_Sign: D_Anim[0],
+    F_Sign: F_Anim[0],
 
   };
 

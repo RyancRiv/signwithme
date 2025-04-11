@@ -37,7 +37,6 @@ const Navbar = () => {
 
   };
 
-
   return (
     <nav>
       <div className="navbar">
@@ -71,9 +70,15 @@ const Navbar = () => {
           <button className="navbar-button b-button" onClick={createcharacterClick}>
               Create Character
             </button>
+
             <button className="navbar-button b-button" onClick={gotoavatar}>
               Go To Avatar
             </button>
+
+            <button className="navbar-button b-button" onClick={gotoavatar}>
+              DownloadLink
+            </button>
+
 
         </div>
       </div>
