@@ -75,9 +75,6 @@ const Navbar = () => {
               Go To Avatar
             </button>
 
-            <button className="navbar-button b-button" onClick={gotoavatar}>
-              DownloadLink
-            </button>
 
 
         </div>

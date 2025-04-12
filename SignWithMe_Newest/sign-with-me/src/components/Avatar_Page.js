@@ -1,50 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-// import AvatarCreator from "./Character_Creation";
 import AvatarCreator from "./CreateCharacter";
+import AvatarViewer from "./AvatarViewer"; // handles both avatar and animation
 
 const AvatarPage = () => {
-  const [avatarUrl, setAvatarUrl] = useState(null); // Holds the avatar URL (GLB file)
-  const [inputUrl, setInputUrl] = useState(""); // Stores the manually entered avatar URL
+  const [avatarUrl, setAvatarUrl] = useState(null);
+  const [inputUrl, setInputUrl] = useState("");
 
-  // Load avatar URL from localStorage if available
   useEffect(() => {
     const storedAvatarUrl = localStorage.getItem("avatarUrl");
-    // const storedAvatarUrl = "/model/main_avatar.glb";
-
     if (storedAvatarUrl) {
-      setAvatarUrl(storedAvatarUrl); // Set the avatar URL from localStorage if it exists
+      setAvatarUrl(storedAvatarUrl);
     }
   }, []);
 
   const handleUrlChange = (event) => {
-    setInputUrl(event.target.value); // Update the input field value
+    setInputUrl(event.target.value);
   };
 
   const handleSaveUrl = () => {
     if (inputUrl.trim() !== "") {
-      setAvatarUrl(inputUrl); // Set the URL to the state
-      localStorage.setItem("avatarUrl", inputUrl); // Store the URL in localStorage
+      setAvatarUrl(inputUrl);
+      localStorage.setItem("avatarUrl", inputUrl);
     } else {
-      alert("Please enter a valid URL.");
+      setAvatarUrl("/models/main_avatar.glb")
+      // alert("Please enter a valid URL.");
     }
   };
-
-  // UseGLTF hook to load the .glb file
-  const AvatarModel = ({ url }) => {
-    const { scene } = useGLTF(url); // Load the .glb model using the URL
-
-    return (
-      <primitive object={scene} scale={3} position={[0, -3, 0]} rotation={[0.3, 0, 0]} /> // Adjust scale and position as needed
-    );
+  const handleAvatarCreated = (url) => {
+    setAvatarUrl(url || "/models/main_avatar.glb");
   };
+  
 
   return (
     <div>
       <h1>Create Your Avatar</h1>
 
-      {/* Input Field for Manual Avatar URL */}
       <div>
         <label>
           Enter Avatar URL (GLB File):
@@ -59,19 +50,21 @@ const AvatarPage = () => {
         <button onClick={handleSaveUrl}>Save Avatar URL</button>
       </div>
 
-      {/* Display the Avatar if URL is set */}
       {avatarUrl ? (
         <div style={{ width: "100%", height: "500px" }}>
           <h2>Your Avatar</h2>
-          <Canvas>
+          <Canvas camera={{ position: [0, 1.6, 3] }}>
             <ambientLight intensity={3} />
-            <spotLight position={[10, 10, 10]} angle={0.15} intensity={1} />
-            <AvatarModel url={avatarUrl} />
+            <spotLight position={[10, 10, 10]} angle={0.15} intensity={1.5} />
+            <AvatarViewer
+              avatarUrl={avatarUrl || "/models/main_avatar.glb" }
+              animationUrl="/animation/Avatar_Sign_F.glb" // Replace this with your actual animation path
+            />
           </Canvas>
         </div>
       ) : (
-        // If avatarUrl is not set, show Avatar Creator
-        <AvatarCreator onAvatarCreated={setAvatarUrl} />
+        <AvatarCreator onAvatarCreated={handleAvatarCreated} />
+
       )}
     </div>
   );
