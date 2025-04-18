@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import AvatarWithAnimation from "./Avatar_Animations";
-
+import { useNavigate } from "react-router-dom";
 
 const animationNames = [
   "A_Sign",
@@ -36,13 +36,18 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 function LearningAlphabet() {
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleNext = () => {
-    setCurrentLetterIndex((prev) => (prev + 1 < letters.length ? prev + 1 : prev));
+    setCurrentLetterIndex((prev) =>
+      prev + 1 < letters.length ? prev + 1 : prev
+    );
   };
 
   const handlePrevious = () => {
-    setCurrentLetterIndex((prev) => (prev - 1 >= 0 ? prev - 1 : prev));
+    setCurrentLetterIndex((prev) =>
+      prev - 1 >= 0 ? prev - 1 : prev
+    );
   };
 
   const currentLetter = letters[currentLetterIndex];
@@ -51,7 +56,7 @@ function LearningAlphabet() {
   return (
     <div className="learning-alphabet-container">
       <h1>Learning the Alphabet: {currentLetter}</h1>
-      
+
       <div className="letter">
         {currentAnimation ? (
           <Canvas camera={{ position: [0, 0, 5] }}>
@@ -71,13 +76,19 @@ function LearningAlphabet() {
         <button onClick={handlePrevious} disabled={currentLetterIndex === 0}>
           Previous
         </button>
-        <button onClick={handleNext} disabled={currentLetterIndex === letters.length - 1}>
+        <button
+          onClick={handleNext}
+          disabled={currentLetterIndex === letters.length - 1}
+        >
           Next
         </button>
+      </div>
+
+      <div className="go-to-quiz" style={{ marginTop: "20px" }}>
+        <button onClick={() => navigate("/quiz")}>Go to Quiz</button>
       </div>
     </div>
   );
 }
 
 export default LearningAlphabet;
-

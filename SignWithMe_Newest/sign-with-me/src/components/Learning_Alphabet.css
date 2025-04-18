@@ -1,107 +1,92 @@
-/* Container for Unit 1 Page */
 .alphabet-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: flex-start; /* Start items from the top */
-  min-height: 100vh; /* Full height of viewport */
-  width: 100vw; /* Full width */
-  margin: 0; /* Remove default margin */
-  padding: 20px; /* Add padding for spacing */
-  background: linear-gradient(
-    135deg,
-    #6a0dad,
-    #d2c2e1
-  ); /* Purple background */
-
-  /* background-color:rgb(190, 171, 207); */
-  color: white; /* White text color */
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #6a0dad, #d2c2e1);
+  color: white;
   font-family: "Arial", sans-serif;
-  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-y: auto;
 }
 
-/* Title Styling */
 h1 {
   font-size: 2.5em;
-  margin-bottom: 20px; /* Space below title */
-  text-align: center; /* Center title text */
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Lesson Section Styling */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border: 5px solid white;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+  margin-top: 20px;
+}
+
+.image {
+  width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
 .lesson {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* Slight transparency for lesson boxes */
-  border-radius: 10px; /* Rounded corners */
-  padding: 15px; /* Padding for content */
-  margin: 15px 0; /* Space between lesson sections */
-  width: 90%; /* Set width to 90% for responsiveness */
-  max-width: 600px; /* Set max width to ensure lessons fit within screen */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Lesson Title Styling */
 h2 {
   font-size: 1.8em;
-  margin-bottom: 10px; /* Space below lesson title */
+  margin-bottom: 10px;
 }
 
-/* Paragraph and List Styling */
 p {
   font-size: 1.1em;
-  margin: 10px 0; /* Space above and below paragraphs */
+  margin: 10px 0;
 }
 
 ul {
-  list-style-type: disc; /* Bullet points */
-  margin-left: 20px; /* Indent for list items */
-  padding-left: 0; /* Reset padding for lists */
-}
-
-/* Additional adjustments for better spacing */
-body {
-  margin: 0; /* Remove default body margin */
-  padding: 0; /* Remove default body padding */
-}
-
-html {
-  scroll-behavior: smooth; /* Smooth scrolling */
-}
-
-/* Ensure body can scroll */
-body {
-  overflow-y: auto; /* Allow vertical scrolling for the body */
-  height: 100%; /* Ensure body takes full height */
-}
-
-
-.image {
-  width: 300px;
-  padding-top: 50px;
-  display: block;
-  margin: 0 auto;
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
 }
 
 .buttons {
-  width: 10%; /* Keep the specified width */
+  width: 10%;
   display: flex;
   justify-content: center;
-  margin: 20px auto 0; /* Center horizontally and space below the image */
-  
-
+  margin: 20px auto 0;
 }
 
 button {
-  margin: 0 15px; /* Increased horizontal margin for more space between buttons */
+  margin: 0 15px;
   padding: 10px 20px;
   cursor: pointer;
-  font-size:17px;
-
+  font-size: 17px;
 }
 
-/* .alphabet-container{
-  padding-top:50px;
-} */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}

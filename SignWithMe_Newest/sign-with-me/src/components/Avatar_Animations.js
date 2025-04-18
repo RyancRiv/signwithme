@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, PerspectiveCamera } from "@react-three/drei";
 
 function AvatarWithAnimation({ animationName }) {
   const group = useRef();
@@ -16,8 +16,6 @@ function AvatarWithAnimation({ animationName }) {
   const { animations: E_Anim } = useGLTF("/animation/Avatar_Sign_E.glb");
   const { animations: F_Anim } = useGLTF("/animation/Avatar_Sign_F.glb");
 
-
-
   // Map animations to custom names
   const animationMap = {
     Pointing: pointingAnim[0], // Manually setting the animation
@@ -26,7 +24,6 @@ function AvatarWithAnimation({ animationName }) {
     C_Sign: C_Anim[0],
     D_Sign: D_Anim[0],
     F_Sign: F_Anim[0],
-
   };
 
   // Extract animations for useAnimations
@@ -41,8 +38,7 @@ function AvatarWithAnimation({ animationName }) {
       const action = actions[animActionName];
       if (action) {
         action.reset();
-        // action.setDuration(10.0); // Adjust the duration to 3 seconds
-        action.timeScale = 0.8;  // Normal playback speed
+        action.timeScale = 0.8; // Normal playback speed
         action.play();
         console.log(`Playing animation: ${animActionName} (3s duration, normal speed)`);
       } else {
@@ -50,13 +46,25 @@ function AvatarWithAnimation({ animationName }) {
       }
     }
   }, [animationName, actions]);
-  
-  return (
-    <group ref={group}>
-      {/* <primitive object={avatarScene} scale={[1.9, 1.9, 1.8]} position={[0, -2, 0]} /> */}
-      <primitive object={avatarScene} scale={[2.5, 2.5, 4]} position={[-0.09, -2.5, 0]} rotation={[0.2, 0, 0]}  />
 
-    </group>
+  return (
+    <>
+      {/* Set up the camera */}
+      <PerspectiveCamera 
+        makeDefault 
+        position={[0, 0, 10]} // Adjust the camera to ensure it's looking at the avatar
+      />
+      
+      {/* Avatar model with centered position */}
+      <group ref={group}>
+        <primitive 
+          object={avatarScene} 
+          scale={[50, 50, 30]} 
+          position={[0, -60, -50]} // Centered position
+          rotation={[0.2, 0, 0]} 
+        />
+      </group>
+    </>
   );
 }
 

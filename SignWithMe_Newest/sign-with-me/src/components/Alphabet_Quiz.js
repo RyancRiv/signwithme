@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import imageA from "../Letters/ASLAlphabetPoster_A.webp.png";
-// import imageB from "../Letters/ASLAlphabetPoster_B.webp.png";
 import imageA from "../Letters/A_Cropped.png";
 import imageB from "../Letters/B_Cropped.png";
-
 import imageC from "../Letters/ASLAlphabetPoster_C.webp.png";
 import imageD from "../Letters/ASLAlphabetPoster_D.webp.png";
 import imageCAT from "../Letters/ASL_CAT.webp";
@@ -11,9 +8,11 @@ import imageDOG from "../Letters/ASL_DOG1.webp";
 import imageBEE from "../Letters/ASL_BEE.webp";
 import imageANT from "../Letters/ASL_ANT.webp";
 import "./Alphabet_Quiz.css";
-import QuizCompletion from "./quizCompletion"; // Make sure to create this component
+import QuizCompletion from "./quizCompletion";
 import Navbar from "./Navbar";
-import axios from "axios"; // Import axios for making HTTP requests
+import axios from "axios";
+import AvatarWithAnimation from "./Avatar_Animations";
+import { Canvas } from "@react-three/fiber"; // ✅ NEW
 
 function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -26,16 +25,28 @@ function Quiz() {
 
   const level1Data = [
     {
-      question: "Select the letter this sign represents.",
-      image: imageA,
+      question: "What letter is being signed?",
+      animation: "A_Sign",
       choices: ["A", "B", "C", "D"],
       correct: "A",
     },
     {
-      question: "Select the letter this sign represents.",
-      image: imageB,
+      question: "What letter is being signed?",
+      animation: "B_Sign",
       choices: ["A", "B", "C", "D"],
       correct: "B",
+    },
+    {
+      question: "What letter is being signed?",
+      animation: "C_Sign",
+      choices: ["A", "B", "C", "D"],
+      correct: "C",
+    },
+    {
+      question: "What letter is being signed?",
+      animation: "D_Sign",
+      choices: ["A", "B", "C", "D"],
+      correct: "D",
     },
   ];
 
@@ -68,9 +79,7 @@ function Quiz() {
       }
       setFeedback("Correct!");
     } else {
-      setFeedback(
-        `Incorrect! The correct answer was ${currentQuestion.correct}.`
-      );
+      setFeedback(`Incorrect! The correct answer was ${currentQuestion.correct}.`);
     }
 
     const nextIndex = currentQuestionIndex + 1;
@@ -81,7 +90,6 @@ function Quiz() {
       }, 1000);
     } else {
       if (!isLevel1) {
-        // Quiz is completed
         setQuizCompleted(true);
       } else {
         console.log("Level 1 finished");
@@ -93,16 +101,13 @@ function Quiz() {
     setIsLevel1(false);
   };
 
-  // Function to send an API request to update the lesson in the DB
   const updateLessonQuizCompletion = async (totalScore) => {
     try {
-      const userName = localStorage.getItem("userName"); // Fetch logged-in user's username from localStorage
-      const lessonId = "101"; // The lesson to check and update
+      const userName = localStorage.getItem("userName");
+      const lessonId = "101";
       if (totalScore === 4) {
         await axios.put(
-          // "https://signwithme-92dm.onrender.com/api/lessons/update-lesson",
           "http://localhost:5001/api/lessons/update-lesson",
-
           {
             lessonId: lessonId,
             userName: userName,
@@ -118,7 +123,7 @@ function Quiz() {
 
   if (quizCompleted) {
     const totalScore = level1Score + level2Score;
-    updateLessonQuizCompletion(totalScore); // Update the lesson if score is 4
+    updateLessonQuizCompletion(totalScore);
     return (
       <QuizCompletion
         score={totalScore}
@@ -142,6 +147,18 @@ function Quiz() {
       <p style={{ paddingLeft: "2%", fontSize: "25px" }}>
         {currentQuestion.question}
       </p>
+
+      {/* ✅ Render Avatar Animation for Level 1 */}
+      {isLevel1 && currentQuestion.animation && (
+        <div style={{ width: "400px", height: "400px", margin: "0 auto" }}>
+          <Canvas camera={{ position: [0, 0, 5] }}>
+            <ambientLight />
+            <directionalLight position={[0, 0, 5]}/>
+            <AvatarWithAnimation animationName={currentQuestion.animation} />
+          </Canvas>
+        </div>
+      )}
+
       {currentQuestion.image && (
         <img
           src={currentQuestion.image}
@@ -190,6 +207,7 @@ function Quiz() {
           {feedback}
         </div>
       )}
+
       <div style={{ display: "block" }}>
         {currentQuestionIndex < currentData.length - 1 && (
           <button
