@@ -1,41 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import Logo from "../Assets/Logo.png";
-import { AuthContext } from "../AuthContext"; // Import AuthContext
-import "./Navbar.css";
+import { AuthContext } from "../AuthContext";
+import "../components/Navbar.css";
+
+
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useContext(AuthContext); // Access authentication context
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   const handleLogout = () => {
-    logout(); // Call logout function from AuthContext
-    navigate("/"); // Redirect to home page after logout
-  };
-
-  const homeClick = () => {
+    logout();
     navigate("/");
   };
 
-  const unitsClick = () => {
-    navigate("/units");
-  };
-
-  const loginClick = () => {
-    navigate("/login");
-  };
-
-  const createcharacterClick = () => {
-    navigate("/createcharacters");
-    // navigate("/createcharacters2");
-
-  };
-
-  const gotoavatar = () => {
-    // navigate("/createcharacters");
-    navigate("/avatar");
-
-  };
+  const homeClick = () => navigate("/");
+  const unitsClick = () => navigate("/units");
+  const loginClick = () => navigate("/login");
+  const createcharacterClick = () => navigate("/createcharacters");
+  const gotoavatar = () => navigate("/avatar");
+  const translationClick = () => navigate("/translation"); // ✅ correct route
 
   return (
     <nav>
@@ -54,29 +39,26 @@ const Navbar = () => {
           </button>
 
           {isAuthenticated ? (
-            <>
-              <button className="navbar-button b-button" onClick={handleLogout}>
-                Logout
-              </button>
-
-            </>
+            <button className="navbar-button b-button" onClick={handleLogout}>
+              Logout
+            </button>
           ) : (
-            <button className="navbar-button b-button" onClick={loginClick}>
+            <button className="navbar-button b-button login-button" onClick={loginClick}>
               Login/Signup
             </button>
-
-            
           )}
+
           <button className="navbar-button b-button" onClick={createcharacterClick}>
-              Create Character
-            </button>
+            Create Character
+          </button>
 
-            <button className="navbar-button b-button" onClick={gotoavatar}>
-              Go To Avatar
-            </button>
+          <button className="navbar-button b-button" onClick={gotoavatar}>
+            Go To Avatar
+          </button>
 
-
-
+          <button className="navbar-button translation_page-button" onClick={translationClick}>
+            Translation
+          </button>
         </div>
       </div>
     </nav>

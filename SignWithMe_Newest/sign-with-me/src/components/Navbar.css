@@ -34,7 +34,7 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 15px; /* Space between buttons */
+  gap: 15px; 
 }
 
 /* Shared Button Styling */
