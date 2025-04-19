@@ -31,14 +31,14 @@ h1 {
   height: 100px; /* Set height for the input box */
   border-radius: 10px; /* Rounded corners */
   border: none; /* No border */
-  padding: 15px; /* Padding inside the box */
-  margin-bottom: 20px; /* Space below input */
-  font-size: 1.2em; /* Font size for input text */
+  padding: 15px; 
+  margin-bottom: 20px; 
+  font-size: 1.2em; 
 }
 
 /* Button Styling */
 .translate-button {
-  background-color: #9b30ff; /* Light purple background */
+  background-color: #9b30ff; 
   color: white;
   border: none;
   padding: 12px 25px;
