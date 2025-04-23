@@ -35,7 +35,7 @@ function LandingPage() {
       {/* <div className="canvas-container">  */}
         <Canvas> 
         <ambientLight intensity={2} />
-        <AvatarWithAnimation animationName="F_Sign" />
+        <AvatarWithAnimation animationName="Pointing" />
       </Canvas> 
      </div>
     // </div>
