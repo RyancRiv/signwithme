@@ -61,9 +61,10 @@ function LearningAlphabet() {
         {currentAnimation ? (
           <Canvas camera={{ position: [0, 0, 5] }}>
             <ambientLight />
-            <directionalLight position={[0, 0, 5]} />
-            <AvatarWithAnimation animationName={currentAnimation} />
+            <directionalLight position={[0, 0, 5]}  />
+            <AvatarWithAnimation animationName={currentAnimation} width="50" height="50" z_axis = "50" />
           </Canvas>
+
         ) : (
           <div className="no-animation">
             <p style={{ fontSize: "4rem" }}>{currentLetter}</p>

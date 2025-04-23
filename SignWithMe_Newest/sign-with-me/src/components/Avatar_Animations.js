@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations, PerspectiveCamera } from "@react-three/drei";
 
-function AvatarWithAnimation({ animationName }) {
+function AvatarWithAnimation({ animationName, width,height,z_axis }) {
   const group = useRef();
 
   // Load the main avatar model
@@ -15,6 +15,10 @@ function AvatarWithAnimation({ animationName }) {
   const { animations: D_Anim } = useGLTF("/animation/Avatar_Sign_D.glb");
   const { animations: E_Anim } = useGLTF("/animation/Avatar_Sign_E.glb");
   const { animations: F_Anim } = useGLTF("/animation/Avatar_Sign_F.glb");
+  const { animations: G_Anim_1 } = useGLTF("/animation/Avatar_Sign_G.glb");
+  const { animations: G_Anim_2 } = useGLTF("/animation/Avatar_Sign_G_V2.glb");
+  const { animations: H_Anim } = useGLTF("/animation/Avatar_Sign_H.glb");
+
 
   // Manually rename animation clips to prevent name collisions
   if (pointingAnim[0]) pointingAnim[0].name = "Pointing";
@@ -24,6 +28,10 @@ function AvatarWithAnimation({ animationName }) {
   if (D_Anim[0]) D_Anim[0].name = "D_Sign";
   if (E_Anim[0]) E_Anim[0].name = "E_Sign";
   if (F_Anim[0]) F_Anim[0].name = "F_Sign";
+  if (G_Anim_1[0]) G_Anim_1[0].name = "G_Sign_1";
+  if (G_Anim_2[0]) G_Anim_1[0].name = "G_Sign_2";
+  if (H_Anim[0]) H_Anim[0].name = "H_Sign";
+
 
   // Combine animations into a single list for useAnimations
   const allAnimations = [
@@ -34,6 +42,9 @@ function AvatarWithAnimation({ animationName }) {
     D_Anim[0],
     E_Anim[0],
     F_Anim[0],
+    G_Anim_1[0],
+    G_Anim_2[0],
+    H_Anim[0],
   ].filter(Boolean); // Remove undefined entries
 
   const { actions } = useAnimations(allAnimations, group);
@@ -67,7 +78,7 @@ function AvatarWithAnimation({ animationName }) {
       <group ref={group}>
         <primitive 
           object={avatarScene} 
-          scale={[25, 25, 25]} 
+          scale={[width, height, z_axis]} 
           position={[5, -30, -50]} // Centered position
           rotation={[0.2, 0, 0]} 
         />

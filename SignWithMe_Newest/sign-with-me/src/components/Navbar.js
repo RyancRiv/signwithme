@@ -43,7 +43,7 @@ const Navbar = () => {
               Logout
             </button>
           ) : (
-            <button className="navbar-button b-button login-button" onClick={loginClick}>
+            <button className="navbar-button b-button" onClick={loginClick}>
               Login/Signup
             </button>
           )}
