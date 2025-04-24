@@ -19,6 +19,8 @@ function AvatarWithAnimation({ animationName, width,height,z_axis }) {
   const { animations: G_Anim_2 } = useGLTF("/animation/Avatar_Sign_G_V2.glb");
   const { animations: H_Anim } = useGLTF("/animation/Avatar_Sign_H.glb");
   const { animations: J_Anim } = useGLTF("/animation/Avatar_Sign_J.glb");
+  const { animations: One_Anim } = useGLTF("/animation/Avatar_Sign_One.glb");
+
 
 
   // Manually rename animation clips to prevent name collisions
@@ -33,6 +35,7 @@ function AvatarWithAnimation({ animationName, width,height,z_axis }) {
   if (G_Anim_2[0]) G_Anim_1[0].name = "G_Sign_2";
   if (H_Anim[0]) H_Anim[0].name = "H_Sign";
   if (J_Anim[0]) J_Anim[0].name = "J_Sign";
+  if (One_Anim[0]) One_Anim[0].name = "J_Sign";
 
 
   // Combine animations into a single list for useAnimations
@@ -48,7 +51,7 @@ function AvatarWithAnimation({ animationName, width,height,z_axis }) {
     G_Anim_2[0],
     H_Anim[0],
     J_Anim[0],
-
+    One_Anim[0],
   ].filter(Boolean); // Remove undefined entries
 
   const { actions } = useAnimations(allAnimations, group);
